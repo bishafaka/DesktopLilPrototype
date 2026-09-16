@@ -23,7 +23,6 @@ public class PointerUIElement : MonoBehaviour
 	}
 	[DllImport("user32.dll")]
 	static extern bool GetCursorPos(out POINT lpPoint);
-
 #endif
 	void Awake()
 	{
