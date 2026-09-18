@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	[SerializeField] RectTransform elementToDrag;
+	[SerializeField] bool disableOnStart=false;
 	Canvas canvas;
 	RectTransform canvasRect;
 	Vector2 dragOffset;
@@ -16,6 +17,8 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 			canvasRect=canvas.GetComponent<RectTransform>();
 		if(elementToDrag==null)
 			elementToDrag=GetComponent<RectTransform>();
+		if(disableOnStart)
+			gameObject.SetActive(false);
 	}
 	void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
 	{
