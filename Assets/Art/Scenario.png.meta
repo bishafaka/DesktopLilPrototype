@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23c530b41ca431149817fee3cc49e13a
+guid: 2201520979b28ec4180fe99d2a716d21
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,10 +103,10 @@ TextureImporter:
       name: Scenario_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 6
-        width: 510
-        height: 500
+        x: 5
+        y: 2
+        width: 502
+        height: 510
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
