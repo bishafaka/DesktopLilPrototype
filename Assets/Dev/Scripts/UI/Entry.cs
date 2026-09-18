@@ -50,6 +50,6 @@ public class Entry : MonoBehaviour
 			favouritesEntry.text+=".";
 		}
 		else
-			favouritesEntry.text="# No favourites! Only comes for food.";
+			favouritesEntry.text="# None! Only comes to eat.";
 	}
 }
