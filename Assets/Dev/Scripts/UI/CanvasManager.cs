@@ -14,6 +14,8 @@ public class CanvasManager : MonoBehaviour
 		PanelToEnable.transform.localPosition=Vector2.zero;
 	}
 	public void DisablePanel(GameObject PanelToDisable) => PanelToDisable.SetActive(false);
+	public void OpenURL(string URL) => Application.OpenURL(URL);
+	public void QuitGame() => Application.Quit();
 
 //INVENTORY
 	public void ToggleInventory(Animator _Animator)

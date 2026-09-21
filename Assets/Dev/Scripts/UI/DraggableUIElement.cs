@@ -6,6 +6,7 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
 	[SerializeField] RectTransform elementToDrag;
 	[SerializeField] bool disableOnStart=false;
+	[SerializeField] bool putAsLastSibling=true;
 	Canvas canvas;
 	RectTransform canvasRect;
 	Vector2 dragOffset;
@@ -24,6 +25,8 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 	{
 		if(canvas==null || canvasRect==null || elementToDrag==null)
 			return;
+		if(putAsLastSibling)
+			elementToDrag.SetAsLastSibling();
 		Vector2 localMousePosition;
 		if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
 			dragOffset=elementToDrag.anchoredPosition-localMousePosition;
