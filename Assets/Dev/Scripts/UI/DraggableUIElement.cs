@@ -21,7 +21,12 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 		if(disableOnStart)
 			gameObject.SetActive(false);
 	}
-	void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    void OnEnable()
+    {
+        if (putAsLastSibling)
+            elementToDrag.SetAsLastSibling();
+    }
+    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
 	{
 		if(canvas==null || canvasRect==null || elementToDrag==null)
 			return;
