@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd46b8ed436f6d74089decf147ba5877, type: 3}
   m_Name: Chiton
   m_EditorClassIdentifier: Assembly-CSharp::Kitty
-  kittyIcon: {fileID: 21300000, guid: 78e8370cf36f68549bacd210b78d2294, type: 3}
+  kittyIcon: {fileID: 21300000, guid: 0119671c45fb96647be0ae45af2c0718, type: 3}
   kittyName: "Chit\xF3n"
   kittyDescription: Also called "Creature" by his owner, in a mischievous witch's
     voice. He loves to loaf on your clothes, especially when he knows you're allergic
