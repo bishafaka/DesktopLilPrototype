@@ -13,14 +13,20 @@ public class Entry : MonoBehaviour
 #if UNITY_EDITOR
 	void OnValidate()
 	{
-		SetEntry();
+		UpdateEntry();
 	}
 #endif
 	void OnEnable()
 	{
-		SetEntry();
+		UpdateEntry();
 	}
-	public void SetEntry()
+	public void SetEntry(Kitty _Kitty)
+	{
+		entry=_Kitty;
+		UpdateEntry();
+    }
+
+    void UpdateEntry()
 	{
 		if(entry!=null)
 		{
@@ -30,10 +36,10 @@ public class Entry : MonoBehaviour
 			SetDescription();
 		}
 	}
-	public void SetName() => nameEntry.text="Kitty\n"+entry.kittyName;
-	public void SetDescription() => descriptionEntry.text=entry.kittyDescription;
-	public void SetIcon() => iconEntry.sprite=entry.kittyIcon;
-	public void SetFavourites()
+	void SetName() => nameEntry.text="Kitty\n"+entry.kittyName;
+	void SetDescription() => descriptionEntry.text=entry.kittyDescription;
+	void SetIcon() => iconEntry.sprite=entry.kittyIcon;
+	void SetFavourites()
 	{
 		string[] favouritesNames=new string[entry.kittyFavourites.Length];
 		if(favouritesNames.Length>0)
