@@ -33,6 +33,6 @@ public class CanvasManager : MonoBehaviour
 	{
 		Entry entry=journalPanel.GetComponent<Entry>();
 		if(entry!=null)
-            entry.SetEntry(_Kitty);
-    }
+			entry.SetEntry(_Kitty);
+	}
 }

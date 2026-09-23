@@ -24,9 +24,9 @@ public class Entry : MonoBehaviour
 	{
 		entry=_Kitty;
 		UpdateEntry();
-    }
+	}
 
-    void UpdateEntry()
+	void UpdateEntry()
 	{
 		if(entry!=null)
 		{
