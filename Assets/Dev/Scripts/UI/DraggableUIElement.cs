@@ -7,34 +7,45 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 	[SerializeField] RectTransform elementToDrag;
 	[SerializeField] bool disableOnStart=false;
 	[SerializeField] bool putAsLastSibling=true;
+	[SerializeField] bool beginElementOnCursor=false;
 	Canvas canvas;
 	RectTransform canvasRect;
 	Vector2 dragOffset;
+	Animator animator;
+	const string BEGIN_DRAG_TRIGGER="BeginDrag";
+	const string END_DRAG_TRIGGER="EndDrag";
 
 	void Awake()
 	{
 		canvas=GetComponentInParent<Canvas>();
-		if(canvas!=null)
+		animator=GetComponent<Animator>();
+		if (canvas!=null)
 			canvasRect=canvas.GetComponent<RectTransform>();
 		if(elementToDrag==null)
 			elementToDrag=GetComponent<RectTransform>();
 		if(disableOnStart)
 			gameObject.SetActive(false);
 	}
-    void OnEnable()
-    {
-        if (putAsLastSibling)
-            elementToDrag.SetAsLastSibling();
-    }
-    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+	void OnEnable()
+	{
+		if (putAsLastSibling)
+			elementToDrag.SetAsLastSibling();
+	}
+	void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
 	{
 		if(canvas==null || canvasRect==null || elementToDrag==null)
 			return;
 		if(putAsLastSibling)
 			elementToDrag.SetAsLastSibling();
-		Vector2 localMousePosition;
-		if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
-			dragOffset=elementToDrag.anchoredPosition-localMousePosition;
+		if(animator!=null)
+			animator.SetTrigger(BEGIN_DRAG_TRIGGER);
+        Vector2 localMousePosition;
+        if(beginElementOnCursor)
+            dragOffset=Vector2.zero;
+		else
+			if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
+				dragOffset=elementToDrag.anchoredPosition-localMousePosition;
+        
 	}
 	void IDragHandler.OnDrag(PointerEventData eventData)
 	{
@@ -43,7 +54,7 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 		Vector2 localMousePosition;
 		if(!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
 			return;
-		Vector2 position=localMousePosition+dragOffset;
+        Vector2 position =localMousePosition+dragOffset;
 		Vector2 elementSize=elementToDrag.rect.size;
 		float minX=canvasRect.rect.xMin+elementSize.x*elementToDrag.pivot.x;
 		float maxX=canvasRect.rect.xMax-elementSize.x*(1f-elementToDrag.pivot.x);
@@ -55,6 +66,7 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 	}
 	void IEndDragHandler.OnEndDrag(PointerEventData eventData)
 	{
-		Debug.Log("EndDrag");
+		if(animator!=null)
+			animator.SetTrigger(END_DRAG_TRIGGER);
 	}
 }
