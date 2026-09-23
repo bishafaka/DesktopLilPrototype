@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cf04a70015f394197df48f0ca39c42, type: 3}
-  m_Name: BagCatKibble
-  m_EditorClassIdentifier: Assembly-CSharp::Food
-  objectName: Bag of cat kibble
+  m_Script: {fileID: 11500000, guid: 0bc5d982ba4c4f04c9ba3a0941e43063, type: 3}
+  m_Name: SmallBall
+  m_EditorClassIdentifier: Assembly-CSharp::Furniture
+  objectName: Small ball
   objectDiscription: 
-  objectIcon: {fileID: 0}
-  bIsObjectPlaced: 0
+  objectIcon: {fileID: 21300000, guid: 25c38dbbc7cae4548bdd2ab9f35f14f6, type: 3}
+  isObjectPlaced: 0
   objectPosition: {x: 0, y: 0}

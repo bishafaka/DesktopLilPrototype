@@ -7,5 +7,5 @@ public class Kitty : ScriptableObject
 	public string kittyName;
 	[TextArea(1, 3)]
 	public string kittyDescription;
-	public Object[] kittyFavourites;
+	public Item[] kittyFavourites;
 }

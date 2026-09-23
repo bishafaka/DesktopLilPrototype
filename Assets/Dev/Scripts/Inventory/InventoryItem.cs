@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class InventoryItem : DraggableUIElement
 {
 	[SerializeField] Image image;
-	[HideInInspector] public Object currentObject;
+	[HideInInspector] public Item currentObject;
 	[HideInInspector] public Transform parentOnEndDrag;
-	public void InitItem(Object newObject)
+	public void InitItem(Item newObject)
 	{
 		currentObject=newObject;
-		image.sprite=newObject.objectIcon;
+		image.sprite=newObject.itemIcon;
 	}
 	public override void Awake()
 	{

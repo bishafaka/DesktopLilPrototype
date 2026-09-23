@@ -45,7 +45,7 @@ public class Entry : MonoBehaviour
 		if(favouritesNames.Length>0)
 		{
 			for(int i=0; i<entry.kittyFavourites.Length; i++)
-				favouritesNames[i]=entry.kittyFavourites[i].objectName;
+				favouritesNames[i]=entry.kittyFavourites[i].itemName;
 			favouritesEntry.text="# ";
 			for(int i=0; i<favouritesNames.Length; i++)
 			{

@@ -3,7 +3,7 @@ public class InventoryContainer : MonoBehaviour
 {
 	public GameObject inventoryItemPrefab;
 	public InventorySlot[] InventorySlots;
-	public bool AddItem(Object item)
+	public bool AddItem(Item item)
 	{
 		for(int i=0; i<InventorySlots.Length; i++)
 		{
@@ -17,7 +17,7 @@ public class InventoryContainer : MonoBehaviour
 		}
 		return false;
 	}
-	void SpawnNewItem(Object item, InventorySlot slot)
+	void SpawnNewItem(Item item, InventorySlot slot)
 	{
 		GameObject newItemGO=Instantiate(inventoryItemPrefab, slot.transform);
 		InventoryItem inventoryItem=newItemGO.GetComponent<InventoryItem>();
