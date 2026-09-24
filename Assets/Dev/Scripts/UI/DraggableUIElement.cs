@@ -7,17 +7,17 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 	public RectTransform elementToDrag;
 	[HideInInspector] public Vector2 dragOffset;
 	[HideInInspector] public RectTransform canvasRect;
-	[SerializeField] bool beginElementOnCursor=false;
+	[SerializeField] Animator animator;
 	Canvas canvas;
-	Animator animator;
 	const string BEGIN_DRAG_TRIGGER="BeginDrag";
 	const string END_DRAG_TRIGGER="EndDrag";
 
 	public virtual void Awake()
 	{
 		canvas=GetComponentInParent<Canvas>();
-		animator=GetComponent<Animator>();
-		if (canvas!=null)
+		if(animator==null)
+			animator=GetComponent<Animator>();
+		if(canvas!=null)
 			canvasRect=canvas.GetComponent<RectTransform>();
 		if(elementToDrag==null)
 			elementToDrag=GetComponent<RectTransform>();
@@ -29,12 +29,8 @@ public class DraggableUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 		if(animator!=null)
 			animator.SetTrigger(BEGIN_DRAG_TRIGGER);
 		Vector2 localMousePosition;
-		if(beginElementOnCursor)
-			dragOffset=Vector2.zero;
-		else
-			if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
-				dragOffset=elementToDrag.anchoredPosition-localMousePosition;
-		
+		if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out localMousePosition))
+			dragOffset=elementToDrag.anchoredPosition-localMousePosition;
 	}
 	public virtual void OnDrag(PointerEventData eventData)
 	{

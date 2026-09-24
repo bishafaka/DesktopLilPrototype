@@ -16,15 +16,15 @@ public class ShopContainer : MonoBehaviour
 	{
 		animator=GetComponent<Animator>();
 	}
-    void OnEnable()
-    {
-        StartShuffling();
-    }
-    void OnDisable()
-    {
+	void OnEnable()
+	{
+		StartShuffling();
+	}
+	void OnDisable()
+	{
 		StopShuffling();
-    }
-    public void Rolling()
+	}
+	public void Rolling()
 	{
 		rollCount++;
 		if(rollCount<=MAX_ROLL_COUNT)
@@ -49,21 +49,21 @@ public class ShopContainer : MonoBehaviour
 			if(button!=null)
 				button.enabled=false;
 		}
-    }
+	}
 	public void StopShuffling()
-    {
-        if(shuffleCoroutine==null)
-            return;
-        StopCoroutine(shuffleCoroutine);
-        shuffleCoroutine=null;
-        foreach(ItemHolder slot in slotHolders)
-        {
-            Button button=slot.gameObject.GetComponent<Button>();
-            if(button!=null)
-                button.enabled=true;
-        }
-    }
-    IEnumerator ShuffleLoop()
+	{
+		if(shuffleCoroutine==null)
+			return;
+		StopCoroutine(shuffleCoroutine);
+		shuffleCoroutine=null;
+		foreach(ItemHolder slot in slotHolders)
+		{
+			Button button=slot.gameObject.GetComponent<Button>();
+			if(button!=null)
+				button.enabled=true;
+		}
+	}
+	IEnumerator ShuffleLoop()
 	{
 		while(true)
 		{
