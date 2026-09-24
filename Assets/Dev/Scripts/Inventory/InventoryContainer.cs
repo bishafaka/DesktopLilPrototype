@@ -3,7 +3,7 @@ public class InventoryContainer : MonoBehaviour
 {
 	public GameObject inventoryItemPrefab;
 	public InventorySlot[] InventorySlots;
-	public bool AddItem(Item item)
+	public void AddItem(ItemHolder item)
 	{
 		for(int i=0; i<InventorySlots.Length; i++)
 		{
@@ -11,11 +11,11 @@ public class InventoryContainer : MonoBehaviour
 			InventoryItem itemInSlot=slot.GetComponentInChildren<InventoryItem>();
 			if(itemInSlot==null)
 			{
-				SpawnNewItem(item, slot);
-				return true;
+				SpawnNewItem(item.GetItem(), slot);
+				return;
 			}
 		}
-		return false;
+		//return false;
 	}
 	void SpawnNewItem(Item item, InventorySlot slot)
 	{
